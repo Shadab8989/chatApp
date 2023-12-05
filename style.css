@@ -87,8 +87,8 @@ body {
 }
 
 .input-container {
-	/* position: fixed;
-    bottom: 5rem; */
+	position: fixed;
+    bottom: 0.5rem;
 	display: flex;
 	margin: 1rem;
 }
