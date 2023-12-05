@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Chat App</title>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		
+
+		<div class="head">
+			<h1>Chat App</h1>
+			<!-- <input type="checkbox" name="" id="" class="mode" /> -->
+			<div class="theme">
+				<img src="icons/light.png" alt="" class="theme-icon cursor" />
+			</div>
+		</div>
+		<div class="container"></div>
+		<div class="input-container">
+			<input type="text" class="text-input" placeholder="Type a message"/>
+			<!-- <input type="image" src="" alt="" class="image-input"> -->
+			<!-- <img src="icons/camera.png" alt="" class="camera"> -->
+			<button class="sendBtn cursor">Send</button>
+		</div>
+		
+
+		<script
+			src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+			integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+			crossorigin="anonymous"
+		></script>
+		<!-- <script>let socket = io.connect("https://localhost:5000")</script> -->
+		<script>
+			const socket = io();
+		</script>
+		<script src="./index.js"></script>
+		<!-- <script src="./camera.js"></script> -->
+	</body>
+</html>
