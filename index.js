@@ -90,10 +90,6 @@ socket.on("message", (data) => {
 	messageElement.appendChild(message);
 
 	container.appendChild(messageElement);
+	container.scrollTop = container.scrollHeight;
 });
 
-let getNameContainer = document.querySelector(".get-name-container");
-let nameInput = document.querySelector(".nameInput");
-let nameBtn = document.querySelector(".nameButton");
-
-function getName() {}
