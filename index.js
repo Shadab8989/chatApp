@@ -10,11 +10,24 @@ let message;
 let nameName = null;
 
 setTimeout(() => {
-	myName = prompt("Enter Your Name");
+	
+}, 100);
+
+myName = prompt("Enter Your Name");
 	while (myName === null) {
 		myName = prompt("Enter Your Name");
-	}
-}, 100);
+		}
+		if (db) {
+			let dbTransaction = db.transaction("userInfo", "readwrite");
+			let userInfoObjectStore = dbTransaction.objectStore("userInfo");
+			let userUniqueID = "info-" + Math.random().toString(16).slice(2);
+			let userInfoObject = {
+				id: userUniqueID,
+				name: myName,
+			};
+			userInfoObjectStore.add(userInfoObject);
+		}
+	
 
 sendBtn.addEventListener("click", (e) => {
 	sendMessage();
@@ -76,6 +89,16 @@ socket.on("message", (data) => {
 	let userName = document.createElement("p");
 	userName.setAttribute("class", "name");
 	userName.innerText = data.name != myName ? data.name : "You";
+	if(db){
+		let messageUniqueID = "msg-" + Math.random().toString(16).slice(2);
+		let msgDbTransaction = db.transaction("messages","readwrite");
+		let msgObjectStore = msgDbTransaction.objectStore("messages");
+		let messageObject = {
+			id:messageUniqueID,
+			message:data.message
+		}
+		msgObjectStore.add(messageObject)
+	}
 	if (data.name === myName) {
 		messageElement.classList.add("right");
 	}
@@ -92,4 +115,3 @@ socket.on("message", (data) => {
 	container.appendChild(messageElement);
 	container.scrollTop = container.scrollHeight;
 });
-
